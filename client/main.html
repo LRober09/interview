@@ -1,23 +1,48 @@
 <head>
-    <title>interview</title>
+    <title>Pledge Projects</title>
 </head>
 
 <body>
-<header>
+<div class="container">
+    <header>
+        <div class="page-header">
+            <h1>Pledge Interview Projects:</h1>
+            <div class="pull-right">
+                {{> loginButtons}}
+            </div>
+        </div>
+    </header>
 
-</header>
-
+    {{> projects}}
+</div>
 </body>
 
 <template name="projects">
 
+    {{#each projects}}
 
-    <div class="panel panel-primary">
-        <div class="panel-header">
-            <h4>Add:</h4>
+    {{/each}}
+
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="nameTextBox" class="control-label">Pledge Name:</label>
+            <input type="text" id="nameTextBox" class="form-control"/>
         </div>
-        
+        <div class="form-group">
+            <label for="titleTextBox" class="control-label">Title:</label>
+            <input type="text" id="titleTextBox" class="form-control"/>
+        </div>
 
-    </div>
+        <div class="form-group">
+            <label for="uploadInput" class="control-label">Upload image:</label>
+            <input type="file" id="uploadInput" name="uploadInput" class="form-control"/>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" id="addButton" class="btn btn-success form-control disabled">Add <span
+                    class="glyphicon glyphicon-plus"></span></button>
+        </div>
+    </form>
+
 
 </template>
