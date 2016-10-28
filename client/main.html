@@ -54,8 +54,10 @@
             <small>Pledge {{name}}</small>
         </h2>
         <img src="{{image.url}}">
-        <button class="btn btn-danger pull-right" id="removeProjectButton"><span
-                class="glyphicon glyphicon-trash"></span></button>
+        {{#if currentUser.profile.isAdmin}}
+            <button class="btn btn-danger pull-right" id="removeProjectButton"><span
+                    class="glyphicon glyphicon-trash"></span></button>
+        {{/if}}
     </div>
     <hr>
 </template>
