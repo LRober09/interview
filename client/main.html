@@ -12,7 +12,7 @@
             </div>
         </div>
     </header>
-
+    {{>sAlert}}
     {{> projects}}
 </div>
 </body>
@@ -20,29 +20,42 @@
 <template name="projects">
 
     {{#each projects}}
-
+        {{>project}}
     {{/each}}
+    {{#if currentUser.profile.isAdmin}}
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="nameTextBox" class="control-label">Pledge Name:</label>
+                <input type="text" id="nameTextBox" class="form-control"/>
+            </div>
+            <div class="form-group">
+                <label for="titleTextBox" class="control-label">Title:</label>
+                <input type="text" id="titleTextBox" class="form-control"/>
+            </div>
 
-    <form class="form-inline">
-        <div class="form-group">
-            <label for="nameTextBox" class="control-label">Pledge Name:</label>
-            <input type="text" id="nameTextBox" class="form-control"/>
-        </div>
-        <div class="form-group">
-            <label for="titleTextBox" class="control-label">Title:</label>
-            <input type="text" id="titleTextBox" class="form-control"/>
-        </div>
+            <div class="form-group">
+                <label for="uploadInput" class="control-label">Upload image:</label>
+                <input type="file" id="uploadInput" name="uploadInput" class="form-control"/>
+            </div>
 
-        <div class="form-group">
-            <label for="uploadInput" class="control-label">Upload image:</label>
-            <input type="file" id="uploadInput" name="uploadInput" class="form-control"/>
-        </div>
-
-        <div class="form-group">
-            <button type="submit" id="addButton" class="btn btn-success form-control disabled">Add <span
-                    class="glyphicon glyphicon-plus"></span></button>
-        </div>
-    </form>
+            <div class="form-group">
+                <button type="submit" id="addButton" class="btn btn-success form-control disabled">Add <span
+                        class="glyphicon glyphicon-plus"></span></button>
+            </div>
+        </form>
+    {{/if}}
 
 
+</template>
+
+<template name="project">
+    <div class="well clearfix">
+        <h2>{{title}} -
+            <small>Pledge {{name}}</small>
+        </h2>
+        <img src="{{image.url}}">
+        <button class="btn btn-danger pull-right" id="removeProjectButton"><span
+                class="glyphicon glyphicon-trash"></span></button>
+    </div>
+    <hr>
 </template>
